@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dannuhh</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div id="app" class="container">
+      <header>
+        <h1>Dannuhh</h1>
+        <div class="auth">
+          <span id="serverStatus" style="margin-right:12px;color:#ffd" title="server status"></span>
+          <span id="usernameDisplay"></span>
+          <button id="loginBtn">로그인</button>
+          <button id="logoutBtn" style="display:none">로그아웃</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel">
+          <h2>단어 추가 (Enter로 바로 추가)</h2>
+          <div class="add-row">
+            <input id="wordInput" placeholder="단어를 입력하고 Enter" />
+            <select id="targetLang"><option value="ko">한국어</option><option value="ja">일본어</option><option value="zh">중국어(간체)</option></select>
+            <button id="translateButton">번역</button>
+          </div>
+          <div id="addNotice" class="muted">입력 후 자동으로 리스트에 추가됩니다. 뜻은 자동으로 번역되어 추가되고 수정 가능합니다.</div>
+
+          <h3>현재 리스트</h3>
+          <div id="listWrap"></div>
+
+          <div class="controls">
+            <input id="listTitle" placeholder="리스트 제목 (선택)" />
+            <button id="generateBtn">플래시카드 생성하기</button>
+          </div>
+        </section>
+
+        <section class="panel" id="cardsPanel" style="display:none">
+          <h2>플래시카드</h2>
+          <div class="card-controls">
+            <label><input type="checkbox" id="showFavoritesOnly" /> 모르는 단어만 보기 (즐겨찾기)</label>
+            <button id="flipAll">반전(뜻 먼저)</button>
+            <button id="backToEditor">편집으로 돌아가기</button>
+          </div>
+          <div id="cardContainer"></div>
+        </section>
+      </main>
+
+      <footer>
+        <small>Demo - built with Express + static frontend</small>
+      </footer>
+
+      <!-- LOGIN / REGISTER MODAL -->
+      <div id="authModal" class="modal" style="display:none">
+        <div class="modal-content">
+          <h3 id="authTitle">로그인</h3>
+          <input id="authUsername" placeholder="username" />
+          <input id="authPassword" type="password" placeholder="password" />
+          <div class="modal-actions">
+            <button id="authSubmit">확인</button>
+            <button id="toggleAuthMode">회원가입으로 전환</button>
+            <button id="closeAuthModal">닫기</button>
+          </div>
+          <div id="authMsg" class="muted"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
